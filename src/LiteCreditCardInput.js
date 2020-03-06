@@ -141,6 +141,7 @@ export default class LiteCreditCardInput extends Component {
   render() {
     const { focused, values: { number }, inputStyle, status: { number: numberStatus } } = this.props;
     const showRightPart = focused && focused !== "number";
+    const isMobile = typeof (document) === "undefined";
 
     return (
       <View style={s.container}>
@@ -149,7 +150,7 @@ export default class LiteCreditCardInput extends Component {
           showRightPart ? s.hidden : s.expanded,
         ]}>
           <CCInput {...this._inputProps("number")}
-            keyboardType="numeric"
+            keyboardType={isMobile ? "numeric" : "default"}
             containerStyle={s.numberInput} />
         </View>
         <TouchableOpacity onPress={showRightPart ? this._focusNumber : this._focusExpiry }>
@@ -163,17 +164,17 @@ export default class LiteCreditCardInput extends Component {
             style={s.last4}>
             <View pointerEvents={"none"}>
               <CCInput field="last4"
-                keyboardType="numeric"
+                keyboardType={isMobile ? "numeric" : "default"}
                 value={ numberStatus === "valid" ? number.substr(number.length - 4, 4) : "" }
                 inputStyle={[s.input, inputStyle]}
                 containerStyle={[s.last4Input]} />
             </View>
           </TouchableOpacity>
           <CCInput {...this._inputProps("expiry")}
-            keyboardType="numeric"
+            keyboardType={isMobile ? "numeric" : "default"}
             containerStyle={s.expiryInput} />
           <CCInput {...this._inputProps("cvc")}
-            keyboardType="numeric"
+            keyboardType={isMobile ? "numeric" : "default"}
             containerStyle={s.cvcInput} />
         </View>
       </View>

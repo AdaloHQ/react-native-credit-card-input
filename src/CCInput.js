@@ -13,6 +13,9 @@ const s = StyleSheet.create({
   baseInputStyle: {
     color: "black",
   },
+  maxWidth: {
+    maxWidth: "100%"
+  }
 });
 
 export default class CCInput extends Component {
@@ -74,7 +77,7 @@ export default class CCInput extends Component {
     return (
       <TouchableOpacity onPress={this.focus}
         activeOpacity={0.99}>
-        <View style={[containerStyle]}>
+        <View style={[s.maxWidth, containerStyle]}>
           { !!label && <Text style={[labelStyle]}>{label}</Text>}
           <TextInput ref="input"
             {...additionalInputProps}

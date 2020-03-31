@@ -18,6 +18,9 @@ const INFINITE_WIDTH = 1000;
 
 const s = StyleSheet.create({
   container: {
+    borderColor: '#e0e0e0',
+    borderRadius: 4,
+    borderWidth: 1,
     paddingLeft: 10,
     paddingRight: 10,
     flexDirection: "row",
